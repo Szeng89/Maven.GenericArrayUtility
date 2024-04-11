@@ -17,15 +17,44 @@ public class ArrayUtility<T> { //made class generic
 
 
     public int getNumberOfOccurrences(T valueToEvaluate) {
-        int occurrenceCount = 0; // initiaize Occurrence counter to 0;
+        // initialize Occurrence counter to 0;
+        int occurrenceCount = 0;
 
-        for (int i = 0; i < this.arrayList.size(); i ++) { // loop through arrayList
-            T value = this.arrayList.get(i); // assign i to T value
-            if (value.equals(valueToEvaluate)) { // if value is equal to parameter
-                occurrenceCount++; // increment count
+        // loop through arrayList
+        for (int i = 0; i < this.arrayList.size(); i ++) {
+
+            // assign i to T value
+            T value = this.arrayList.get(i);
+
+            // if value is equal to parameter
+            if (value.equals(valueToEvaluate)) {
+
+                // increment count
+                occurrenceCount++;
             }
 
         }
         return occurrenceCount;
+    }
+
+    public T getMostCommonFromMerge(T[] arrayToMerge) {
+
+        // initialize mostCommon to first element of array
+        T mostCommon = arrayToMerge[0];
+
+        //loop through the parameter array starting at 1 because index 0 is already going to be used to compare
+        for (int i = 1; i < arrayToMerge.length; i++) {
+
+            // assign i to T element because we need a generic to call numOfOcc method
+            T element = arrayToMerge[i];
+
+            // check if current index occurs more times than what is currently assigned to mostCommon
+            if ( getNumberOfOccurrences(element) > getNumberOfOccurrences(mostCommon)) {
+
+                // re-assign mostCommon if it does
+                mostCommon = element;
+            }
+        }
+        return mostCommon;
     }
 }
