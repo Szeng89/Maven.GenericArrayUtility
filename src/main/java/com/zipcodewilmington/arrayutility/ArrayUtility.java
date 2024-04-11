@@ -8,10 +8,10 @@ import java.util.Arrays;
  */
 public class ArrayUtility<T> { //made class generic
     ArrayList<T> arrayList;
-    T[] array;
+//    T[] array;
 
     public ArrayUtility(T[] inputArray) {
-        this.array=inputArray;
+//        this.array = inputArray;
         this.arrayList = new ArrayList<>(Arrays.asList(inputArray)); // making array into arraylist because its mutable
     }
 
@@ -56,5 +56,13 @@ public class ArrayUtility<T> { //made class generic
             }
         }
         return mostCommon;
+    }
+
+    public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
+
+        //added array to arraylist via constructor
+        this.arrayList.addAll(Arrays.asList(arrayToMerge));
+
+        return getNumberOfOccurrences(valueToEvaluate);
     }
 }
