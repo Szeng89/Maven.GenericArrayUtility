@@ -8,11 +8,12 @@ import java.util.Arrays;
  */
 public class ArrayUtility<T> { //made class generic
     ArrayList<T> arrayList;
-//    T[] array;
+
+    T[] array;
 
     public ArrayUtility(T[] inputArray) {
-//        this.array = inputArray;
-        this.arrayList = new ArrayList<>(Arrays.asList(inputArray)); // making array into arraylist because its mutable
+        array = inputArray;
+        arrayList = new ArrayList<>(Arrays.asList(inputArray)); // making array int    o arraylist because its mutable
     }
 
 
@@ -21,10 +22,10 @@ public class ArrayUtility<T> { //made class generic
         int occurrenceCount = 0;
 
         // loop through arrayList
-        for (int i = 0; i < this.arrayList.size(); i ++) {
+        for (int i = 0; i < arrayList.size(); i ++) {
 
             // assign i to T value
-            T value = this.arrayList.get(i);
+            T value = arrayList.get(i);
 
             // if value is equal to parameter
             if (value.equals(valueToEvaluate)) {
@@ -61,8 +62,54 @@ public class ArrayUtility<T> { //made class generic
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valueToEvaluate) {
 
         //added array to arraylist via constructor
-        this.arrayList.addAll(Arrays.asList(arrayToMerge));
+        arrayList.addAll(Arrays.asList(arrayToMerge));
 
         return getNumberOfOccurrences(valueToEvaluate);
+    }
+
+    public T[] removeValue(T valueToRemove) {
+
+        for (int i = 0; i < arrayList.size(); i++) {
+
+            T value = arrayList.get(i);
+
+            if (value.equals(valueToRemove)) {
+
+//                newList.add(value);
+                arrayList.remove(value);
+            }
+        }
+        System.out.println(arrayList);
+        array = Arrays.copyOfRange(array, 0, arrayList.size());
+
+
+        int i = 0;
+
+        for (T index : arrayList) {
+
+            array[i] = index;
+
+            i++;
+        }
+        return array;
+//        for (int i = 0; i < this.arrayList.size(); i ++) {
+//
+//            // assign i to T value
+//            T value = this.arrayList.get(i);
+//
+//            // if value is equal to parameter
+//            if (value.equals(valueToRemove)) {
+//                this.arrayList.remove(value);
+//            }
+//        }
+//        return arraylist;
+//    }
+//        ArrayList<T> newList = new ArrayList<>();
+
+
+
+
+
+//      return (T[]) arrayList.toArray();
     }
 }
